@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SSE Example</title>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <script type="text/javascript">
+      const eventSource = new EventSource("/sse");
+      eventSource.onmessage = ({ data }) => {
+        const message = document.createElement("li");
+        message.innerText = "New message: " + JSON.parse(data).hello;
+        document.getElementById("messages").appendChild(message);
+      };
+    </script>
+  </body>
+</html>
